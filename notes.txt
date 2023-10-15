@@ -1,0 +1,3 @@
+convert node module to browser? https://linuxhint.com/run-nodejs-module-browser/
+https://www.npmjs.com/package/webp-converter/v/2.2.0
+

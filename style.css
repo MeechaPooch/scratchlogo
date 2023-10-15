@@ -1,0 +1,248 @@
+:root{
+    --line:rgb(0, 128, 255);
+    --background:rgb(206, 179, 223);
+    --panelRot:0deg;
+}
+
+body, html {
+    display: flex;
+    flex-flow: column;
+    flex-grow: 1;
+    align-items:stretch;
+
+    height:100%;
+    width:100%;
+    margin:0;
+    font-family: moped;
+
+    background: var(--background);
+
+   overflow:hidden;
+    
+}
+body{
+    cursor:pointer;
+}
+
+
+input{
+    border:solid 1vw rgb(183, 0, 255);
+    font-size: 5vw;
+    border-radius: 1.6vw;
+    min-width: 2em;
+    max-width: 7em;
+    width: 6em;
+    height:6vw;
+    font-family: moped;
+}
+
+
+.mainSection{
+    display: flex;
+    flex-flow: column;
+    flex-grow:1;
+    align-items:stretch;
+
+    height:100%;
+    width:100%;
+
+    align-items: center;
+    justify-content: center;
+
+    perspective: 100vw;
+}
+
+
+.front{
+    transform:rotateY(var(--panelRot));
+}
+.loading{
+    transform:rotateY(calc( var(--panelRot) + 180deg ));
+}
+
+.outerouterbox{
+    display:flex;
+    
+}
+
+.outerbox{
+    transition: 0.2s;
+    transition-property: transform;
+
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+
+
+    position: absolute;
+
+    scale:80%;
+
+    background-image: url(ilhp10new.png);
+    background-size: cover;
+    background-position: center;
+
+    border:solid var(--background) 5px;
+}
+.outerboxfilter{
+
+    outline:solid var(--background) 5px;
+
+
+    padding:10vw;
+    backdrop-filter: blur(30px);
+
+    box-shadow: inset 0px 0px 6vw 9vw var(--background);
+
+}
+
+.box{
+    min-width: 36vw;
+    background: rgb(255, 255, 255);
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap:1vw;
+
+    outline: dashed rgb(223, 14, 226) 1vw;
+    border-radius: 5vw;
+    padding:2vw;
+    padding:2vw;
+
+
+}
+.image{
+    width:24vw;
+    /* border-radius: 2vw; */
+}
+
+span {
+    display: inline-flex;
+    align-items: center;
+    gap:1vw;
+    font-size: 5vw;
+    color:rgb(183, 0, 255);
+}
+.button{
+    color:white;
+    background:rgb(183, 0, 255);
+    border-radius: 2vw;
+    padding:1vw;
+    transition:.2s;
+    transition-property: rotate;
+}
+.button:hover{
+    rotate:10deg;
+}
+
+h1{
+    font-size: 5vw;
+    margin:0;
+    padding:0;
+    color:rgb(251, 0, 205)
+}
+h2{
+    font-size: 4vw;
+    margin:0;
+    padding:0;
+    color:rgb(251, 125, 0);
+    text-align: center;
+    
+
+}
+.uploadOutline {
+    flex-grow: 1;
+    align-self: stretch;
+    margin: 20px;
+    display: flex;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    /* flex-grow:1; */
+
+    border-radius: 100px;
+    border: var(--line) dashed 1vw;
+    background: rgb(221, 247, 255);
+    /* stroke-dasharray: 10px 100px; */
+
+    /* width:50vw;
+    height:80vh; */
+    align-self: center;
+    margin-top:10vh;
+
+}
+
+.file{
+    display: none;
+}
+
+plus{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 200px;
+    color:var(--line);
+    font-weight: 10;
+}
+
+@font-face {
+    font-family: moped;
+    src: url(BLACKBOYSONMOPEDS.ttf);
+}
+
+
+
+
+
+
+/* loaders from https://loading.io/css/ */
+
+
+.lds-dual-ring {
+    display: flex;
+    width: 28vw;
+    height: 28vw;
+    justify-content: center;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: flex;
+    width: 14vw;
+    height: 14vw;
+    margin: 8px;
+    border-radius: 50%;
+    border: 1.5vw solid rgb(251, 0, 205);
+    border-color: rgb(251, 0, 205) transparent rgb(251, 0, 205) transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  check{
+    color:rgb(251, 0, 205);
+    font-size: 20vw;
+  }
+
+  .yuh{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+  }
+
+  #errormessage{
+    max-width: 36vw;
+    word-break: break-word;
+    text-align: center;
+  }
+
+  a{
+    color:blue;
+  }
