@@ -113,5 +113,6 @@ app.post('/user', async (req, res) => {
 })
 
 
-
-app.listen(4560)
+const port=4560
+app.listen(port)
+console.log(`hosted at ${(await (await fetch('https://ipinfo.io/json')).json()).ip}:${port}`)
