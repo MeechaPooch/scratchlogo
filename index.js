@@ -1,4 +1,5 @@
 import express from 'express'
+import https from 'https'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import webp from 'webp-converter'
@@ -12,6 +13,11 @@ const frameOutput = 'outp.webp'
 const animOutput = 'final.png'
 const maxDim = '499'
 webp.grant_permission();
+
+const privateKey  = fs.readFileSync('~/ssl-keys/privkey.pem', 'utf8');
+const certificate = fs.readFileSync('~/ssl-keys/cert.pem', 'utf8');
+const credentials = {key: privateKey, cert: certificate};
+
 
 let app = express()
 app.use(cors({origin:'*'}))
@@ -114,5 +120,7 @@ app.post('/user', async (req, res) => {
 
 
 const port=4560
-app.listen(port)
+let httpsServer = https.createServer(credentials, app);
+httpsServer.listen(port)
+// app.listen(port)
 console.log(`hosted at ${(await (await fetch('https://ipinfo.io/json')).json()).ip}:${port}`)
