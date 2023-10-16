@@ -14,8 +14,8 @@ const animOutput = 'final.png'
 const maxDim = '499'
 webp.grant_permission();
 
-const privateKey  = fs.readFileSync('~/ssl-keys/privkey.pem', 'utf8');
-const certificate = fs.readFileSync('~/ssl-keys/cert.pem', 'utf8');
+const privateKey  = fs.readFileSync('/home/ubuntu/ssl-keys/privkey.pem', 'utf8');
+const certificate = fs.readFileSync('/home/ubuntu/ssl-keys/cert.pem', 'utf8');
 const credentials = {key: privateKey, cert: certificate};
 
 
