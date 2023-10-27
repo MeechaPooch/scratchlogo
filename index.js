@@ -76,6 +76,7 @@ function createWebp(image) {
 }
 
 app.post('/image', async (req, res) => {
+  fs.appendFile(logs,'~image')
   console.log('hi')
   console.log(req.body)
   let id = startConversion()
@@ -84,7 +85,6 @@ app.post('/image', async (req, res) => {
   // res.send(output)
   console.log(process.cwd() + path.sep + id + path.sep + animOutput)
   res.sendFile(process.cwd() + path.sep + id + path.sep + animOutput,()=>{finishConversion(id)})
-  fs.appendFile(logs,'~image')
   // res.end();
   return;
   } catch (e) {
@@ -95,6 +95,7 @@ app.post('/image', async (req, res) => {
 })
 
 app.post('/user', async (req, res) => {
+  fs.appendFile(logs,req.body)
   let id = startConversion()
   try{
   console.log('hi')
@@ -108,9 +109,8 @@ app.post('/user', async (req, res) => {
   console.log(imageBlob)
   let output = await create(Buffer.from(await imageBlob.arrayBuffer()),id)
   // res.send(output)
-  console.log(process.cwd() + path.sep + id + animOutput)
+  console.log(process.cwd() + path.sep + id + path.sep + animOutput)
   res.sendFile(process.cwd() + path.sep + id + path.sep + animOutput,()=>{finishConversion(id)})
-  fs.appendFile(logs,req.body)
   // res.end();
 
   return;
