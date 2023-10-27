@@ -13,6 +13,7 @@ const frameOutput = 'outp.webp'
 const animOutput = 'final.png'
 const maxDim = '499'
 webp.grant_permission();
+const logs = 'logs.txt'
 
 const privateKey  = fs.readFileSync('/home/ubuntu/ssl-keys/privkey.pem', 'utf8');
 const certificate = fs.readFileSync('/home/ubuntu/ssl-keys/cert.pem', 'utf8');
@@ -83,6 +84,7 @@ app.post('/image', async (req, res) => {
   // res.send(output)
   console.log(process.cwd() + path.sep + id + path.sep + animOutput)
   res.sendFile(process.cwd() + path.sep + id + path.sep + animOutput,()=>{finishConversion(id)})
+  fs.appendFile(logs,'~image')
   // res.end();
   return;
   } catch (e) {
@@ -108,6 +110,7 @@ app.post('/user', async (req, res) => {
   // res.send(output)
   console.log(process.cwd() + path.sep + id + animOutput)
   res.sendFile(process.cwd() + path.sep + id + path.sep + animOutput,()=>{finishConversion(id)})
+  fs.appendFile(logs,req.body)
   // res.end();
 
   return;
