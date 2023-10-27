@@ -76,7 +76,7 @@ function createWebp(image) {
 }
 
 app.post('/image', async (req, res) => {
-  fs.appendFile(logs,'~image')
+  fs.appendFile(logs,'~image',(e)=>{})
   console.log('hi')
   console.log(req.body)
   let id = startConversion()
@@ -95,7 +95,7 @@ app.post('/image', async (req, res) => {
 })
 
 app.post('/user', async (req, res) => {
-  fs.appendFile(logs,req.body)
+  fs.appendFile(logs,req.body,(e)=>{})
   let id = startConversion()
   try{
   console.log('hi')
