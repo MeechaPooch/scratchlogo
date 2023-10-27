@@ -7,6 +7,7 @@ import fs from 'fs'
 import sizeOf from 'image-size'
 import sharp from 'sharp'
 import path from 'path'
+import san from 'sanitize-filename'
 const inp = './img'
 const resized = './resized.png'
 const frameOutput = 'outp.webp'
@@ -76,7 +77,7 @@ function createWebp(image) {
 }
 
 app.post('/image', async (req, res) => {
-  fs.appendFile(logs,'~image',(e)=>{})
+  fs.appendFile(logs,`\n~image`,(e)=>{})
   console.log('hi')
   console.log(req.body)
   let id = startConversion()
@@ -95,7 +96,7 @@ app.post('/image', async (req, res) => {
 })
 
 app.post('/user', async (req, res) => {
-  fs.appendFile(logs,req.body,(e)=>{})
+  fs.appendFile(logs,`\n${san(req.body)}`,(e)=>{})
   let id = startConversion()
   try{
   console.log('hi')
