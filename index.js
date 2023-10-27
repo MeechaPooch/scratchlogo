@@ -77,7 +77,7 @@ function createWebp(image) {
 }
 
 app.post('/image', async (req, res) => {
-  fs.appendFile(logs,`\n~image`,(e)=>{})
+  try{fs.appendFile(logs,`\n~image`,(e)=>{})}catch(e){}
   console.log('hi')
   console.log(req.body)
   let id = startConversion()
@@ -96,7 +96,7 @@ app.post('/image', async (req, res) => {
 })
 
 app.post('/user', async (req, res) => {
-  fs.appendFile(logs,`\n${san(req.body)}`,(e)=>{})
+  try{fs.appendFile(logs,`\n${san(String(req.body))}`,(e)=>{})}catch(e){}
   let id = startConversion()
   try{
   console.log('hi')
