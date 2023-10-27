@@ -13,6 +13,7 @@ let doneElem=document.querySelector('#done')
 let mylink=document.querySelector('#mylink')
 let errorbox=document.querySelector('#error')
 let errormessage=document.querySelector('#errormessage')
+let preview=document.querySelector('#preview')
 
 var state=0;
 //ready 0, loading 1, done 2
@@ -55,8 +56,7 @@ async function doStuffWithUsername(name) {
     a.download = `${name}-hires.png`;
     document.body.appendChild(a);
     a.click();
-    window.URL.revokeObjectURL(url);
-    done()
+    done(url)
 }
 
 async function doShitWithFile(file) {
@@ -93,11 +93,11 @@ async function doShitWithFile(file) {
     a.download = `${file.name.split('.')[0]}-hires.png`;
     document.body.appendChild(a);
     a.click();
-    window.URL.revokeObjectURL(url);
+    // window.URL.revokeObjectURL(url);
     // or you know, something with better UX...
     // alert('your file has downloaded!'); 
     // console.log(output.body)
-    done();
+    done(url);
 }
 
 
@@ -142,12 +142,13 @@ function start(){
     document.documentElement.style.setProperty('--panelRot', '180deg');
     document.body.style.cursor='unset'
 }
-function done(){
+function done(url){
     state=2;
     converting.style.display='none'
     errorbox.style.display='none'
     doneElem.style.display='flex'
     document.body.style.cursor='unset'
+    preview.src=url
 }
 function reset(){
     state=0;

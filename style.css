@@ -118,6 +118,9 @@ input{
     width:24vw;
     /* border-radius: 2vw; */
 }
+#preview{
+    width:29vw;
+}
 
 span {
     display: inline-flex;
