@@ -14,9 +14,9 @@ const animOutput = 'final.png'
 const maxDim = '499'
 webp.grant_permission();
 
-const privateKey  = fs.readFileSync('/home/ubuntu/ssl-keys/privkey.pem', 'utf8');
-const certificate = fs.readFileSync('/home/ubuntu/ssl-keys/cert.pem', 'utf8');
-const credentials = {key: privateKey, cert: certificate};
+// const privateKey  = fs.readFileSync('/home/ubuntu/ssl-keys/privkey.pem', 'utf8');
+// const certificate = fs.readFileSync('/home/ubuntu/ssl-keys/cert.pem', 'utf8');
+// const credentials = {key: privateKey, cert: certificate};
 
 
 let app = express()
@@ -120,7 +120,7 @@ app.post('/user', async (req, res) => {
 
 
 const port=4560
-let httpsServer = https.createServer(credentials, app);
-httpsServer.listen(port)
-// app.listen(port)
+// let httpsServer = https.createServer(credentials, app);
+// httpsServer.listen(port)
+app.listen(port)
 console.log(`hosted at ${(await (await fetch('https://ipinfo.io/json')).json()).ip}:${port}`)
