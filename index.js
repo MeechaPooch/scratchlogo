@@ -32,12 +32,12 @@ let lastId=0
 function startConversion() {
   lastId++;
   let id=""+lastId;
-  try{fs.rmdirSync(id,{recursive:true,force:true});}catch(e){}
+  try{fs.rmSync(id,{recursive:true,force:true});}catch(e){}
   fs.mkdirSync(id);
   return id;
 }
 function finishConversion(id) {
-  fs.rmdirSync(id,{recursive:true,force:true})
+  try{fs.rmSync(id,{recursive:true,force:true})}catch(e){}
 }
 async function create(image,id) {
   let size = sizeOf(image);
